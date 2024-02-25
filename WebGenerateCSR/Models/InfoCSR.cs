@@ -87,6 +87,8 @@ namespace WebGenerateCSR.Models
 	public class ApplicationContext : DbContext
 	{
 		public DbSet<InfoCSR_Result> InfoCSR_Results { get; set; } = null!;
+
+		public DbSet<InfoCSR> InfoCSRs { get; set; } = null!;
 		public DbSet<Country> Countrys { get; set; } = null!;
 		public DbSet<State> States { get; set; } = null!;
 		public DbSet<City> Cities { get; set; } = null!;
@@ -100,6 +102,7 @@ namespace WebGenerateCSR.Models
 
 	public class InfoCSR
 	{
+		public int Id { set; get; }
 		[Display(Name = "Введите домен")]
 		[Required(ErrorMessage = "Введите домен")]
 		public string DomainName { set; get; }
@@ -128,6 +131,8 @@ namespace WebGenerateCSR.Models
 		[Display(Name = "Введите почтовый адресс")]
 		[Required(ErrorMessage = "Введите почтовый адресс")]
 		public string Email { set; get; }
+
+		public string? KeyCSR { set; get; }
 	}
 
 
@@ -261,9 +266,9 @@ namespace WebGenerateCSR.Models
 				{
 					StringBuilder builder = new StringBuilder();
 
-					builder.AppendLine("-----BEGIN CERTIFICATE-----");
+			//		builder.AppendLine("-----BEGIN CERTIFICATE-----");
 					builder.AppendLine(Convert.ToBase64String(cert.Export(X509ContentType.Cert), Base64FormattingOptions.InsertLineBreaks));
-					builder.AppendLine("-----END CERTIFICATE-----");
+			//		builder.AppendLine("-----END CERTIFICATE-----");
 
 					//builder.ToString().Dump("Self-signed Certificate");
 					return builder.ToString();

@@ -31,17 +31,18 @@ namespace WebGenerateCSR.Controllers
         {
             if (ModelState.IsValid)
             {
-                return Content( GeneratorCSR.GenerateCSR(infoCSR) );
+                infoCSR.KeyCSR = GeneratorCSR.GenerateCSR(infoCSR);
+                db.InfoCSRs.Add(infoCSR);
+				db.SaveChanges();
+				return View("Result",db.InfoCSRs);
             }
-			ViewBag.Countrys = db.Countrys.ToList();
-            ViewBag.States = db.States.ToList();
-			ViewBag.Cities = db.Cities.ToList();
-			return View("Index");
+			return Index();
         }
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
+
+        public IActionResult Result()
+        {
+            return View(db.InfoCSRs);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

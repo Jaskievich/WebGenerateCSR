@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Результат";
+}
+<h2>@ViewData["Title"]</h2>
+
+@model IEnumerable<InfoCSR>;
+<table>
+    <tr>
+        <th>Доменное имя</th>
+        <th>Компания</th>
+        <th>Отдел</th>
+        <th>Страна</th>
+        <th>Область</th>
+        <th>Город</th>
+        <th>Email</th>
+        <th>KeyCSR</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DomainName</td>
+            <td>@item.OrganizationName</td>
+            <td>@item.OrganizationalUnit</td>
+            <td>@item.Country</td>
+            <td>@item.State</td>
+            <td>@item.City</td>
+            <td>@item.Email</td>
+            <td>@item.KeyCSR</td>
+        </tr>
+    }
+</table>
