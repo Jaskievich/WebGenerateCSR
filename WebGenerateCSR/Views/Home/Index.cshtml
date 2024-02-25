@@ -1,9 +1,23 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
 }
 
 @model WebGenerateCSR.Models.InfoCSR
-
+@* 
+@section Scripts {
+	<script>
+		$(function () {
+				$("#Country").on("change", function () {
+				var Model1Id = $(this).val();
+				
+	
+			
+			});
+		});
+	</script>
+} *@
+ 
 <form id="form0" method="post">
 	<div >	
 				<div >
@@ -15,57 +29,58 @@
 				<div >
 					<div><label asp-for="OrganizationName"></label></div>
 					<input asp-for="OrganizationName" placeholder="Organization" type="text" value="" />
-					<span asp-validation-for="OrganizationName" data-valmsg-replace="true"></span>
+					<span asp-validation-for="OrganizationName"></span>
 				</div>
 
 			
 				<div >
 					<div><label asp-for="OrganizationalUnit"></label></div>
 					<input asp-for ="OrganizationalUnit" placeholder="Organizational Unit" type="text" value="" />
-					<span asp-validation-for="OrganizationalUnit" data-valmsg-replace="true"></span>
+					<span asp-validation-for="OrganizationalUnit" ></span>
 				</div>
 			
 				<div >
-					<div><label asp-for="Country"></label></div>
+					<div><label asp-for="Country" ></label></div>
 					<div>
-						<select asp-for="Country">
+				<select asp-for="Country" asp-action="OnSelectCountry">
 							@foreach (var item in ViewBag.Countrys)
 							{
 								<option value=@item.Alpha2>@item.Name</option>
 							}
-						</select>
-						<span asp-validation-for="Country" data-valmsg-replace="true"></span>
+							</select>
+						@* <button name="button" style="background-color: transparent; color: yellow" value="odense" asp-action="check">Odense</button> *@
+						<span asp-validation-for="Country"></span>
 					</div>
 				</div>
 			
 				<div>
 					<div><label asp-for="State"></label></div>
-					@* <input asp-for="State" placeholder="State" type="text" value="" /> *@
-					<select asp-for="State">
+					<input asp-for="State" placeholder="State" type="text" value="" />
+				@* 	<select asp-for="State">
 						@foreach (var item in ViewBag.States)
 						{
 							<option value=@item.Name>@item.Name</option>
 						}
-					</select>
-					<span asp-validation-for="State" data-valmsg-replace="true"></span>
+					</select> *@
+					<span asp-validation-for="State"></span>
 				</div>
 			
 				<div >
 					<div><label asp-for="City"></label></div>
-					@* <input asp-for="City" placeholder="Locality" type="text" value="" /> *@
-					<select asp-for="City">
+					<input asp-for="City" placeholder="Locality" type="text" value="" />
+					@* <select asp-for="City">
 						@foreach (var item in ViewBag.Cities)
 						{
 							<option value=@item.Name>@item.Name</option>
 						}
-					</select>
-					<span asp-validation-for="City" data-valmsg-replace="true"></span>
+					</select> *@
+					<span asp-validation-for="City" ></span>
 				</div>
 
 				<div >
 					<div><label asp-for="Email"></label></div>
 					<input asp-for="Email" placeholder="Email" type="text" value="" />
-					<span asp-validation-for="Email" data-valmsg-replace="true"></span>
+					<span asp-validation-for="Email" ></span>
 				</div>
 
 		</div>
@@ -73,6 +88,7 @@
 		<input type="submit" value=Сгенерировать />
 	</div>
 </form>
+
 
 @* <form  id="form0" method="post">
 	<div class="input-box">

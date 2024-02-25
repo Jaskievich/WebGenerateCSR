@@ -4,6 +4,29 @@
 <h2>@ViewData["Title"]</h2>
 
 @model IEnumerable<InfoCSR>;
+
+<style type="text/css">
+    TABLE {
+        width: 300px; /* Ширина таблицы */
+        border: 2px solid black; /* Рамка вокруг таблицы */
+        background: silver; /* Цвет фона таблицы */
+    }
+
+    TD, TH {
+        text-align: center; /* Выравнивание по центру */
+        padding: 3px; /* Поля вокруг содержимого ячеек */
+        border: 1px solid black; /* Параметры рамки */
+    }
+
+    TH {
+        background: #4682b4; /* Цвет фона */
+        color: white; /* Цвет текста */
+        border-bottom: 2px solid black; /* Линия снизу */
+    }
+
+</style>
+
+
 <table>
     <tr>
         <th>Доменное имя</th>

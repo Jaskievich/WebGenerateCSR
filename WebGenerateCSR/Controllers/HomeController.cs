@@ -39,7 +39,12 @@ namespace WebGenerateCSR.Controllers
 			return Index();
         }
 
-        public IActionResult Result()
+		public IActionResult OnSelectCountry()
+        {
+            return View();
+		}
+
+		public IActionResult Result()
         {
             return View(db.InfoCSRs);
         }
