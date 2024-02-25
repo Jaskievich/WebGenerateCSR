@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using static WebGenerateCSR.Models.GeneratorCSR;
+using WebGenerateCSR.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

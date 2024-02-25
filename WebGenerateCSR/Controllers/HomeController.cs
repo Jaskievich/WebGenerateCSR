@@ -20,15 +20,21 @@ namespace WebGenerateCSR.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var countres = db.Countrys.ToList();
-			return View(countres);
+            ViewBag.Countrys = db.Countrys.ToList();
+			ViewBag.States = db.States.ToList();
+			return View();
         }
 
         [HttpPost]
-        public string Index(InfoCSR infoCSR)
+        public IActionResult Index(InfoCSR infoCSR)
         {
-            return GeneratorCSR.GenerateCSR(infoCSR);
-            //	return View();
+            if (ModelState.IsValid)
+            {
+                return Content( GeneratorCSR.GenerateCSR(infoCSR) );
+            }
+			ViewBag.Countrys = db.Countrys.ToList();
+            ViewBag.States = db.States.ToList();
+			return View("Index");
         }
         //public IActionResult Privacy()
         //{

@@ -2,51 +2,64 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model IEnumerable<WebGenerateCSR.Models.Country>
+@model WebGenerateCSR.Models.InfoCSR
 
 <form id="form0" method="post">
 	<div >	
 				<div >
-					<input data-val="true" data-val-required="Поле должно быть заполнено" name="DomainName" placeholder="Common name" type="text" value="" />
-					<span class="field-validation-valid" data-valmsg-for="DomainName" data-valmsg-replace="true"></span>
+					<div><label asp-for="DomainName"></label></div>
+					<input asp-for="DomainName" placeholder="Common name" type="text" value="" />
+					<span asp-validation-for="DomainName"></span>
 				</div>
 				
 				<div >
-					<input name="OrganizationName" placeholder="Organization" type="text" value="" />
-					<span class="field-validation-valid" data-valmsg-for="OrganizationName" data-valmsg-replace="true"></span>
+					<div><label asp-for="OrganizationName"></label></div>
+					<input asp-for="OrganizationName" placeholder="Organization" type="text" value="" />
+					<span asp-validation-for="OrganizationName" data-valmsg-replace="true"></span>
 				</div>
 
 			
 				<div >
-					<input name="OrganizationalUnit" placeholder="Organizational Unit" type="text" value="" />
-					<span class="field-validation-valid" data-valmsg-for="OrganizationalUnit" data-valmsg-replace="true"></span>
+					<div><label asp-for="OrganizationalUnit"></label></div>
+					<input asp-for ="OrganizationalUnit" placeholder="Organizational Unit" type="text" value="" />
+					<span asp-validation-for="OrganizationalUnit" data-valmsg-replace="true"></span>
 				</div>
 			
 				<div >
-					<div class="select-wrapper">
-						<select data-val="true" data-val-required="Поле должно быть заполнено" id="Country" name="Country">
-						@foreach (var item in Model)
+					<div><label asp-for="Country"></label></div>
+					<div>
+						<select asp-for="Country">
+					@foreach (var item in ViewBag.Countrys)
 						{
 							<option value=@item.Alpha2>@item.Name</option>
 						}
 						</select>
-						<span class="field-validation-valid" data-valmsg-for="Country" data-valmsg-replace="true"></span>
+						<span asp-validation-for="Country" data-valmsg-replace="true"></span>
 					</div>
 				</div>
 			
 				<div>
-					<input name="State" placeholder="State" type="text" value="" />
-					<span class="field-validation-valid" data-valmsg-for="State" data-valmsg-replace="true"></span>
+					<div><label asp-for="State"></label></div>
+					@* <input asp-for="State" placeholder="State" type="text" value="" /> *@
+					<select asp-for="State">
+						@foreach (var item in ViewBag.States)
+						{
+							<option value=@item.Name>@item.Name</option>
+						}
+					</select>
+					<span asp-validation-for="State" data-valmsg-replace="true"></span>
 				</div>
 			
 				<div >
-					<input name="City" placeholder="Locality" type="text" value="" />
-					<span class="field-validation-valid" data-valmsg-for="City" data-valmsg-replace="true"></span>
+					<div><label asp-for="City"></label></div>
+					<input asp-for="City" placeholder="Locality" type="text" value="" />
+					<span asp-validation-for="City" data-valmsg-replace="true"></span>
 				</div>
 
 				<div >
-					<input name="Email" placeholder="Email" type="text" value="" />
-					<span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+					<div><label asp-for="Email"></label></div>
+					<input asp-for="Email" placeholder="Email" type="text" value="" />
+					<span asp-validation-for="Email" data-valmsg-replace="true"></span>
 				</div>
 
 		</div>
