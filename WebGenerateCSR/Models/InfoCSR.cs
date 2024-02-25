@@ -104,7 +104,7 @@ namespace WebGenerateCSR.Models
 	{
 		[Display(Name = "Введите домен")]
 		[Required(ErrorMessage = "Введите домен")]
-		public string? DomainName { set; get; }
+		public string DomainName { set; get; }
 
 		[Display(Name = "Введите организацию")]
 		[Required(ErrorMessage = "Введите организацию")]
@@ -115,6 +115,8 @@ namespace WebGenerateCSR.Models
 		public string OrganizationalUnit { set; get; }
 
 		[Display(Name = "Выберите страну")]
+
+	//	public Country Country { set; get; } = new();
 		public string Country { set; get; }
 
 		[Display(Name = "Введите область")]
