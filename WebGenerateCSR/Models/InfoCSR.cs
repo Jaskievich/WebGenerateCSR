@@ -21,8 +21,6 @@ using Microsoft.EntityFrameworkCore;
 namespace WebGenerateCSR.Models
 {
 
-
-
 	public class Country
 	{
 		public int Id { get; set; }
