@@ -29,10 +29,10 @@
 					<div><label asp-for="Country"></label></div>
 					<div>
 						<select asp-for="Country">
-					@foreach (var item in ViewBag.Countrys)
-						{
-							<option value=@item.Alpha2>@item.Name</option>
-						}
+							@foreach (var item in ViewBag.Countrys)
+							{
+								<option value=@item.Alpha2>@item.Name</option>
+							}
 						</select>
 						<span asp-validation-for="Country" data-valmsg-replace="true"></span>
 					</div>
@@ -52,7 +52,13 @@
 			
 				<div >
 					<div><label asp-for="City"></label></div>
-					<input asp-for="City" placeholder="Locality" type="text" value="" />
+					@* <input asp-for="City" placeholder="Locality" type="text" value="" /> *@
+					<select asp-for="City">
+						@foreach (var item in ViewBag.Cities)
+						{
+							<option value=@item.Name>@item.Name</option>
+						}
+					</select>
 					<span asp-validation-for="City" data-valmsg-replace="true"></span>
 				</div>
 

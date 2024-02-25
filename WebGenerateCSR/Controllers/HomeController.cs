@@ -22,6 +22,7 @@ namespace WebGenerateCSR.Controllers
         {
             ViewBag.Countrys = db.Countrys.ToList();
 			ViewBag.States = db.States.ToList();
+			ViewBag.Cities = db.Cities.ToList();
 			return View();
         }
 
@@ -34,6 +35,7 @@ namespace WebGenerateCSR.Controllers
             }
 			ViewBag.Countrys = db.Countrys.ToList();
             ViewBag.States = db.States.ToList();
+			ViewBag.Cities = db.Cities.ToList();
 			return View("Index");
         }
         //public IActionResult Privacy()
