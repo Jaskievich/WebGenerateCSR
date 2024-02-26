@@ -20,9 +20,7 @@ namespace WebGenerateCSR.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.Countrys = db.Countrys.ToList();
-			ViewBag.States = db.States.ToList();
-			ViewBag.Cities = db.Cities.ToList();
+            ViewBag.Countries = db.Countries.ToList();
 			return View();
         }
 
@@ -31,18 +29,18 @@ namespace WebGenerateCSR.Controllers
         {
             if (ModelState.IsValid)
             {
-                infoCSR.KeyCSR = GeneratorCSR.GenerateCSR(infoCSR);
-                db.InfoCSRs.Add(infoCSR);
+                KeyCSR keyCSR = GeneratorCSR.GenerateFor(infoCSR);
+                infoCSR.PrivateKey = keyCSR.privateKey;
+                infoCSR.ReqCSR = keyCSR.ReqCSR;
+				db.InfoCSRs.Add(infoCSR);
 				db.SaveChanges();
-				return View("Result",db.InfoCSRs);
+                ViewBag.Countries = db.Countries.ToList();
+                return View(infoCSR);
+                //	return View("Result",db.InfoCSRs);
             }
-			return Index();
+          
+            return Index();
         }
-
-		public IActionResult OnSelectCountry()
-        {
-            return View();
-		}
 
 		public IActionResult Result()
         {
