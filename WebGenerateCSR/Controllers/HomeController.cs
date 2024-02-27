@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebGenerateCSR.Models;
-using static WebGenerateCSR.Models.GeneratorCSR;
 
 namespace WebGenerateCSR.Controllers
 {
@@ -34,12 +33,9 @@ namespace WebGenerateCSR.Controllers
                 infoCSR.ReqCSR = keyCSR.ReqCSR;
 				db.InfoCSRs.Add(infoCSR);
 				db.SaveChanges();
-                ViewBag.Countries = db.Countries.ToList();
-                return View(infoCSR);
-                //	return View("Result",db.InfoCSRs);
             }
-          
-            return Index();
+            ViewBag.Countries = db.Countries.ToList();
+            return View(infoCSR);
         }
 
 		public IActionResult Result()
@@ -47,10 +43,5 @@ namespace WebGenerateCSR.Controllers
             return View(db.InfoCSRs);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

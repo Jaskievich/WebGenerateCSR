@@ -7,15 +7,18 @@
 
 <style type="text/css">
     TABLE {
-        width: 300px; /* Ширина таблицы */
+        width: 100%; /* Ширина таблицы */
         border: 2px solid black; /* Рамка вокруг таблицы */
         background: silver; /* Цвет фона таблицы */
+        table-layout: fixed;
     }
 
     TD, TH {
-        text-align: center; /* Выравнивание по центру */
+        text-align: left; /* Выравнивание по центру */
+        vertical-align: top;
         padding: 3px; /* Поля вокруг содержимого ячеек */
         border: 1px solid black; /* Параметры рамки */
+        word-wrap: break-word;
     }
 
     TH {
@@ -26,30 +29,33 @@
 
 </style>
 
+<div class="container">
+    <div class="col">
+        <table>
+            <tr>
+                <th>Доменное имя</th>
+                <th>Компания</th>
+                <th>Отдел</th>
+                <th>Страна</th>
+                <th>Область</th>
+                <th>Город</th>
+                <th>Email</th>
+                <th>KeyCSR</th>
+            </tr>
 
-<table>
-    <tr>
-        <th>Доменное имя</th>
-        <th>Компания</th>
-        <th>Отдел</th>
-        <th>Страна</th>
-        <th>Область</th>
-        <th>Город</th>
-        <th>Email</th>
-        <th>KeyCSR</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.DomainName</td>
-            <td>@item.OrganizationName</td>
-            <td>@item.OrganizationalUnit</td>
-            <td>@item.Country</td>
-            <td>@item.State</td>
-            <td>@item.City</td>
-            <td>@item.Email</td>
-            <td>@item.ReqCSR</td>
-        </tr>
-    }
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.DomainName</td>
+                    <td>@item.OrganizationName</td>
+                    <td>@item.OrganizationalUnit</td>
+                    <td>@item.Country</td>
+                    <td>@item.State</td>
+                    <td>@item.City</td>
+                    <td>@item.Email</td>
+                    <td>@item.ReqCSR</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

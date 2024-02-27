@@ -5,68 +5,71 @@
 
 @model InfoCSR
 
-
-<form method="post">
-    <div>
-        <div>
-            <div><label asp-for="DomainName"></label></div>
-            <input asp-for="DomainName" placeholder="Common name" type="text" value="" />
-            <span asp-validation-for="DomainName"></span>
-        </div>
-
-        <div>
-            <div><label asp-for="OrganizationName"></label></div>
-            <input asp-for="OrganizationName" placeholder="Organization" type="text" value="" />
-            <span asp-validation-for="OrganizationName"></span>
-        </div>
-
-
-        <div>
-            <div><label asp-for="OrganizationalUnit"></label></div>
-            <input asp-for="OrganizationalUnit" placeholder="Organizational Unit" type="text" value="" />
-            <span asp-validation-for="OrganizationalUnit"></span>
-        </div>
-
-        <div>
-            <div><label asp-for="Country"></label></div>
+<div class="container">
+    <div class="row col">
+        <form method="post">
             <div>
-                <select asp-for="Country" >
-                    @foreach (var item in ViewBag.Countries)
-                    {
-                        <option value=@item.Alpha2>@item.Name</option>
-                    }
-                </select>
+                <div>
+                    <div><label asp-for="DomainName"></label></div>
+                    <input asp-for="DomainName" placeholder="Common name" type="text" value=@Model?.DomainName />
+                    <span asp-validation-for="DomainName"></span>
+                </div>
 
-                <span asp-validation-for="Country"></span>
+                <div>
+                    <div><label asp-for="OrganizationName"></label></div>
+                    <input asp-for="OrganizationName" placeholder="Organization" type="text" value=@Model?.OrganizationName />
+                    <span asp-validation-for="OrganizationName"></span>
+                </div>
+
+
+                <div>
+                    <div><label asp-for="OrganizationalUnit"></label></div>
+                    <input asp-for="OrganizationalUnit" placeholder="Organizational Unit" type="text" value=@Model?.OrganizationalUnit />
+                    <span asp-validation-for="OrganizationalUnit"></span>
+                </div>
+
+                <div>
+                    <div><label asp-for="Country"></label></div>
+                    <div>
+                        <select asp-for="Country">
+                            @foreach (var item in ViewBag.Countries)
+                            {
+                                <option value=@item.Alpha2>@item.Name</option>
+                            }
+                        </select>
+
+                        <span asp-validation-for="Country"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div><label asp-for="State"></label></div>
+                    <input asp-for="State" placeholder="State" type="text" value=@Model?.State />
+                    <span asp-validation-for="State"></span>
+                </div>
+
+                <div>
+                    <div><label asp-for="City"></label></div>
+                    <input asp-for="City" placeholder="Locality" type="text" value=@Model?.City />
+                    <span asp-validation-for="City"></span>
+                </div>
+
+                <div>
+                    <div><label asp-for="Email"></label></div>
+                    <input asp-for="Email" placeholder="Email" type="text" value=@Model?.Email />
+                    <span asp-validation-for="Email"></span>
+                </div>
+
             </div>
-        </div>
-
-        <div>
-            <div><label asp-for="State"></label></div>
-            <input asp-for="State" placeholder="State" type="text" value="" />
-            <span asp-validation-for="State"></span>
-        </div>
-
-        <div>
-            <div><label asp-for="City"></label></div>
-            <input asp-for="City" placeholder="Locality" type="text" value="" />
-            <span asp-validation-for="City"></span>
-        </div>
-
-        <div>
-            <div><label asp-for="Email"></label></div>
-            <input asp-for="Email" placeholder="Email" type="text" value="" />
-            <span asp-validation-for="Email"></span>
-        </div>
-
+            <div>
+                <input type="submit" value=Сгенерировать />
+            </div>
+        </form>
     </div>
-    <div>
-        <input type="submit" value=Сгенерировать />
+    <div class="row col">
+        <div><label>CERTIFICATE REQUEST</label></div>
+        <div class="myDiv"> @Model?.ReqCSR</div>
+        <div><label>PRIVATE KEY</label></div>
+        <div class="myDiv"> @Model?.PrivateKey </div>
     </div>
-</form>
-
-
-<div><label>CERTIFICATE REQUEST</label></div>
-<div><label>@Model?.ReqCSR</label></div>
-<div><label>PRIVATE KEY</label></div>
-<div><label>@Model?.PrivateKey</label></div>
+</div>
